@@ -26,7 +26,7 @@ class CreateEtudiantsTable extends Migration
             $table->string('lieu_de_naissance')->nullable();
             $table->string('adress')->nullable();
             $table->enum('niveau', ['Première année', 'Deuxième année', 'Troisième année', 'Quatrième année', 'Cinquième année'])->nullable();
-            $table->enum('matière', ['Physique', 'Arabe', 'Math', 'Informatique', "Français"])->nullable(); // physique, math....
+            $table->enum('matière', ['Physique', 'Arabe', 'Math', 'Informatique', "Française"])->nullable(); // physique, math....
             $table->enum('phase', ['Lycee', 'Moyenne', 'Primaire'])->nullable(); // lycee, moyenne , primaire
             $table->enum('type', ['Agent', 'Admin', 'Etudiant'])->nullable();;
             $table->softDeletes();

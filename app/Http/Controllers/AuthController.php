@@ -14,7 +14,6 @@ class AuthController extends Controller
     public function login(LoginRequest $request){
         $request = $request->validated();
         $etudiant = Etudiant::where('email', $request['email'])->first();
-        $livres = Livre::where('matière', $etudiant->matière)->limit(10);
         if (!$etudiant || !Hash::check($request['password'], $etudiant->mot_de_passe)) {
             return response()->json([
                 'errors' => [
@@ -24,6 +23,7 @@ class AuthController extends Controller
             ], 402);
         } else {
             $token = $etudiant->createToken('authToken')->plainTextToken;
+            $livres = Livre::where('matière', $etudiant->matière)->limit(5)->get();
             return response()->json([
                 'success' => true,
                 'access_token' => $token,

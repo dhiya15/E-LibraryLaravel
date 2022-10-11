@@ -21,10 +21,10 @@ class CreateLivresTable extends Migration
             $table->string("inventaire")->nullable();
             $table->integer("nombre_ex")->nullable();
             $table->string("spécialiste")->nullable();
-            $table->enum('matière', ['Physique', 'Arabe', 'Math', 'Informatique', "Français"])->nullable(); // physique, math....
+            $table->enum('matière', ['Physique', 'Arabe', 'Math', 'Informatique', "Française"])->nullable(); // physique, math....
             $table->string("date_edition")->nullable();
             $table->string("editeur")->nullable();
-            $table->date("date_entrée")->nullable();
+            $table->string("date_entrée")->nullable();
             $table->string("isbn")->nullable();
             $table->string("image")->nullable();
             $table->timestamps();
