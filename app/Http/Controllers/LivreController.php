@@ -7,13 +7,17 @@ use App\Models\Livre;
 
 class LivreController extends Controller
 {
+
+    protected $count = 0;
+
     public function trouverLivre(LivreRequest $request)
     {
         try {
             $data = $request->validated();
             $livres = Livre::query();
-            if(isset($data["titre"])){
-                $livres = $livres->where("titres", "like", "%". $data["titre"] ."%");
+            if(isset($data["titres"])){
+                $livres = $livres->where("titres", "like", "%". $data["titres"] ."%");
+                $this->count += 1;
             }
             $livres = $this->checkIfIsSet($data, $livres, "cotation");
             $livres = $this->checkIfIsSet($data, $livres, "auteur");
@@ -23,7 +27,7 @@ class LivreController extends Controller
             $livres = $this->checkIfIsSet($data, $livres, "editeur");
             $livres = $this->checkIfIsSet($data, $livres, "isbn");
             $livres = $livres->get();
-            if (is_null($livres)) {
+            if (is_null($livres) || $this->count == 0) {
                 return response()->json([], 404);
             }
             return response()->json($livres);
@@ -35,6 +39,7 @@ class LivreController extends Controller
     public function checkIfIsSet($all, $objectQuery, $paramName) {
         if(isset($all[$paramName])) {
             $objectQuery = $objectQuery->orWhere("$paramName", "like", "%" . $all["$paramName"] . "%");
+            $this->count += 1;
         }
         return $objectQuery;
     }
