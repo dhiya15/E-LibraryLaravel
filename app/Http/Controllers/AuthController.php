@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Models\Livre;
 use Illuminate\Http\Request;
 use App\Models\Etudiant;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,7 @@ class AuthController extends Controller
     public function login(LoginRequest $request){
         $request = $request->validated();
         $etudiant = Etudiant::where('email', $request['email'])->first();
+        $livres = Livre::where('matière', $etudiant->matière)->limit(10);
         if (!$etudiant || !Hash::check($request['password'], $etudiant->mot_de_passe)) {
             return response()->json([
                 'errors' => [
@@ -26,7 +28,8 @@ class AuthController extends Controller
                 'success' => true,
                 'access_token' => $token,
                 'token_type' => 'Bearer',
-                'student' => $etudiant
+                'student' => $etudiant,
+                'books' => $livres
             ]);
         }
     }
