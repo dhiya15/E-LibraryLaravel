@@ -23,7 +23,7 @@ class AuthController extends Controller
             ], 402);
         } else {
             $token = $etudiant->createToken('authToken')->plainTextToken;
-            $livres = Livre::where('matière', $etudiant->matière)->limit(5)->get();
+            $livres = Livre::where('matière', $etudiant->matière)->inRandomOrder()->limit(5)->get();
             return response()->json([
                 'success' => true,
                 'access_token' => $token,
