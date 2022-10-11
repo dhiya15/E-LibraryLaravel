@@ -113,19 +113,26 @@ class LivreCrudController extends CrudController
         CRUD::addField([
                 'name' => 'spécialiste',
                 'wrapper' => [
-                    'class' => 'form-group col-md-4'
+                    'class' => 'form-group col-md-6'
                 ],]
         );
         CRUD::addField([
-                'name' => 'editeur',
+                'name' => 'matière',
+                'type'  => 'enum',
                 'wrapper' => [
                     'class' => 'form-group col-md-6'
                 ],]
         );
         CRUD::addField([
+                'name' => 'editeur',
+                'wrapper' => [
+                    'class' => 'form-group col-md-8'
+                ],]
+        );
+        CRUD::addField([
                 'name' => 'date_edition',
                 'wrapper' => [
-                    'class' => 'form-group col-md-2'
+                    'class' => 'form-group col-md-4'
                 ],]
         );
 

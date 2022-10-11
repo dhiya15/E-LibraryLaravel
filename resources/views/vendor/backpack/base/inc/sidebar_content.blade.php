@@ -5,4 +5,4 @@
 
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('etudiant') }}"><i class="nav-icon la la-user-graduate"></i> Etudiants</a></li>
 
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('contact') }}"><i class="nav-icon la la-question"></i> Contacts</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('contact') }}"><i class="nav-icon la la-address-card"></i> Contacts</a></li>

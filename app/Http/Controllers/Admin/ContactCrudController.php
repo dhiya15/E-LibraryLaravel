@@ -14,7 +14,6 @@ use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 class ContactCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     /**
@@ -39,7 +38,7 @@ class ContactCrudController extends CrudController
     {
         CRUD::column('full_name');
         CRUD::column('email');
-        CRUD::column('message');
+        //CRUD::column('message');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
